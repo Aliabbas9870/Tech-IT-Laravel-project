@@ -12,7 +12,7 @@ class AdminGeneralTableController extends Controller
      */
     public function index()
     {
-        return view('backend.GeneralTable');
+        return view('backend.generaltable');
     }
 
     /**

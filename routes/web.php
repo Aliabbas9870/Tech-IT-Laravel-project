@@ -32,22 +32,22 @@ use Illuminate\Support\Facades\Route;
 
 // frontend controller
 
-Route::get('/', [homecontroller::class, 'index']);
-Route::get('/index', [homecontroller::class, 'index'])->name('home');
-Route::get('/Contact', [contactuscontroller::class, 'index']);
-Route::post('/Contact', [contactuscontroller::class, 'store']);
-Route::get('/contact', [contactcontroller::class, 'index']);
-Route::get('/contact', [contactcontroller::class, 'storeA']);
-Route::get('/about', [aboutuscontroller::class, 'index']);
-Route::get('/team', [teamcontroller::class, 'index']);
-Route::get('/teamdetails', [teamdetailscontroller::class, 'index']);
-Route::get('/servicesdetails', [servicedetailscontroller::class, 'index']);
-Route::get('/services', [services::class, 'index']);
-Route::get('/projects', [projectcontroller::class, 'index']);
-Route::get('/insurance', [projectcontroller::class, 'index']);
-Route::get('/faqs', [faqcontroller::class, 'index']);
-Route::get('/blog', [blogcontroller::class, 'index']);
-Route::get('/insurance', [insurancecontroller::class, 'index']);
+Route::get('/', [Homecontroller::class, 'index']);
+Route::get('/index', [Homecontroller::class, 'index'])->name('home');
+Route::get('/Contact', [Contactuscontroller::class, 'index']);
+Route::post('/Contact', [Contactuscontroller::class, 'store']);
+Route::get('/contact', [Contactcontroller::class, 'index']);
+Route::get('/contact', [Contactcontroller::class, 'storeA']);
+Route::get('/about', [Aboutuscontroller::class, 'index']);
+Route::get('/team', [Teamcontroller::class, 'index']);
+Route::get('/teamdetails', [Teamdetailscontroller::class, 'index']);
+Route::get('/servicesdetails', [Servicedetailscontroller::class, 'index']);
+Route::get('/services', [Services::class, 'index']);
+Route::get('/projects', [Projectcontroller::class, 'index']);
+Route::get('/insurance', [Projectcontroller::class, 'index']);
+Route::get('/faqs', [Faqcontroller::class, 'index']);
+Route::get('/blog', [Blogcontroller::class, 'index']);
+Route::get('/insurance', [Insurancecontroller::class, 'index']);
 Route::get('/register', [registercontroller::class, 'index'])->name('user-register');
 Route::post('/register', [registercontroller::class, 'register']);
 Route::post('/register/view', [registercontroller::class, 'view']);
@@ -56,24 +56,22 @@ Route::delete('register/delete/{id}', [registercontroller::class, 'delete'])->na
 Route::get('/register/edit/{id}', [RegisterController::class, 'edit']);
 Route::post('/register/update/{id}', [RegisterController::class, 'update'])->name('register.update');
 ///////////// backend  admin Side Code  ////////////
-Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin');
-Route::get('/Login', [AdminLoginController::class, 'index']);
-// Route::get('/Login', function () {
-//     if (session()->has('email')) {
-//         return redirect('/admin');
-//     } else {
-//         return view('backend/Login');
-//     }
-// });
-Route::get('/admin', [AdminHomeController::class, 'onLogin'])->name('admin');
-// for session
-Route::get('/admin', function () {
-    if (session()->has('email')) {
-        return view('backend.admin');
-    } else {
+////////////////////     admin  ////////////////////////////
+
+//Login Page
+Route::get('/admin/login', [AdminLoginController::class, 'index']);
+Route::get('/admin/login', function(){
+    if(session()->has('email')){
         return redirect('/admin');
+    } else{
+        return view('backend.login');
     }
+
 });
+Route::post('/admin/login', [AdminLoginController::class, 'onLogin']);
+Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']);
+
+Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin');
 Route::post('/admin', [AdminHomeController::class, 'index'])->name('admin');
 Route::get('/Login', [AdminLoginController::class, 'index']);
 Route::Post('/Login', [AdminLoginController::class, 'store']);
@@ -82,8 +80,19 @@ Route::post('/RegisterAdmin', [AdminRegisterController::class, 'store']);
 Route::get('/profile', [AdminProfileController::class, 'index']);
 Route::get('/AdminContact', [AdminContactController::class, 'index']);
 Route::post('/AdminContact', [AdminContactController::class, 'store']);
-Route::get('/AdminFaqs', [AdminFAQSController::class, 'index']);
-Route::get('/formValid', [adminFormValidationController::class, 'index']);
+
+// faqs///
+// Route::get('/AdminFaqs', [AdminFAQSController::class, 'index']);
+Route::get('/AdminFaq', [AdminFAQSController::class, 'index']);
+
+Route::get('/admin/faq-add', [AdminFaqsController::class, 'addFAQ'])->name('faq.add');
+Route::post('/admin/faq-add', [AdminFaqsController::class, 'submitFaqRecord']);
+Route::get('/admin/faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('faq.edit');
+Route::put('/admin/faq-edit/{id}', [AdminFaqsController::class, 'updateFAQ'])->name('faq.update');
+Route::delete('/admin/faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('faq.delete');
+
+
+Route::get('/formValid', [AdminFormValidationController::class, 'index']);
 Route::get('/formLayout', [AdminFormLayoutController::class, 'index']);
 Route::get('/formEditor', [AdminFormEditorController::class, 'index']);
 Route::get('/formElement', [AdminFormElementController::class, 'index']);

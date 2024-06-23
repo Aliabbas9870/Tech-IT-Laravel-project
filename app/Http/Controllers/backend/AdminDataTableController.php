@@ -12,7 +12,7 @@ class AdminDataTableController extends Controller
      */
     public function index()
     {
-      return view('backend.DataTable');
+      return view('backend.datatable');
     }
 
     /**

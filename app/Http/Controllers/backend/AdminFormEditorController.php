@@ -12,7 +12,7 @@ class AdminFormEditorController extends Controller
      */
     public function index()
     {
-        return view('backend.FormEditor');
+        return view('backend.formeditor');
     }
 
     /**

@@ -12,7 +12,7 @@ class adminFormValidationController extends Controller
      */
     public function index()
     {
-        return view('backend.FormValidation');
+        return view('backend.formvalidation');
     }
 
     /**

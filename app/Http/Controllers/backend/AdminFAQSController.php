@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\FAQs;
 use Illuminate\Http\Request;
 
 class AdminFAQSController extends Controller
@@ -10,56 +11,69 @@ class AdminFAQSController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        return view('backend.faqs');
+
+        return view('backend.faq', ['faqs' => FAQs::get()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function addFAQ()
     {
-        //
+        return view('backend.faqadd');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function submitFaqRecord(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'question' => 'required',
+                'answer' => 'required'
+            ]
+            );
+        $FAQ_STATUS = 1;
+        $faqs = new FAQs();
+        $faqs->question = $request->question;
+        $faqs->answer = $request->answer;
+        $faqs->status = $FAQ_STATUS;
+        $faqs->save();
+        return back()->withSuccess('FAQ Record Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function editFAQ($id)
     {
-        //
+        // dd($id);
+        $faqs = FAQs::where('id', $id)->first();
+        return view('backend.faqedit', ['faqs' => $faqs]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function updateFAQ(Request $request, $id)
     {
-        //
+
+        $request->validate(
+            [
+                'question' => 'required',
+                'answer' => 'required'
+            ]
+            );
+
+        $faqs = FAQs::where('id', $id)->first();
+        $FAQ_STATUS = 1;
+
+        $faqs->question = $request->question;
+        $faqs->answer = $request->answer;
+        $faqs->status = $FAQ_STATUS;
+        $faqs->save();
+        return back()->withSuccess('Member Record Updated Successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function deleteFAQ($id)
     {
-        //
+        $team = FAQs::where('id', $id)->first();
+        $team->delete();
+        return back()->withSuccess('Member Record Deleted Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

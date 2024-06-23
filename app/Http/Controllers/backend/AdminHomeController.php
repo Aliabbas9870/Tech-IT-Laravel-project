@@ -3,64 +3,107 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\Admins;
+use App\Models\backend\AdminRegisterModel;
+// use App\Models\backend\AdminsContact;
 use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('backend.index');
-        //
+
+        if(session()->has('email')){
+        // if($request->session()->exists('email')){
+            // dd('Yes');
+            $Name = session('first_name') . " " . session('last_name');
+            $RegisterAdmin= AdminRegisterModel::count();
+            return view('backend.index', compact('Name','RegisterAdmin'));
+
+        } else {
+            return view('backend.login');
+        }
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function registerAdmin()
     {
-        //
+        $url = url('/admin/register');
+        $data = compact('url');
+        return view('backend.admin-add')->with($data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function submitAdminRecord(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                'confirm_password' => 'required',
+                'contact' => 'required'
+            ]
+            );
+        $admin = new Admins();
+        $admin->first_name = $request['first_name'];
+        $admin->last_name = $request['last_name'];
+        $admin->email = $request['email'];
+        $admin->contact = $request['contact'];
+        $admin->password = $request['password'];
+        // $admin->password = md5($request['password']);
+        $admin->status = 1;
+        $admin->save();
+        return redirect('/admin/admins-list');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function showAdminRecord()
     {
-        //
+
+        $admins = Admins::all();
+
+        // Calling the helper function for testing data
+        //testData($admins);
+
+    //     echo "<pre>";
+    //     print_r($admins->toArray()); //toArry runs only when we have some data in DB
+    //    echo  "</pre>";
+    //     die;
+        $data = compact('admins');
+        return view('backend/admins-list')->with($data);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
+        /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function deleteAdminRecord(string $id)
     {
-        //
+        $data  = Admins::find($id);
+        if(!is_null($data)){
+            $data->delete();
+        }
+        $data = compact('admins');
+        return view('backend/admins-list')->with($data);
+
+
     }
+
+    public function editAdminRecord($id)
+    {
+
+        $data  = Admins ::find($id);
+        if(is_null($data)){
+            return view('backend.admins-list');
+        } else {
+            $url = url('/admin/update') . "/" . $id;
+            $data = compact('admins', 'url');
+            return view('backend.admin-add')->with($data);
+        }
+
+    }
+
 }

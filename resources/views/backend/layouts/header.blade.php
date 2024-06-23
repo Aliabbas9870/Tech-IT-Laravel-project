@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@yield('title') | NiceIT </title>
+    <title>@yield('title') | Nice IT </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -36,7 +36,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="/admin" class="logo d-flex align-items-center">
                 {{-- <img src="backend/img/logo.png" alt=""> --}}
-                <span class="d-none d-lg-block">NICE IT</span>
+                <span class="d-none d-lg-block">NICEIT</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -66,7 +66,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
-                            You have 4 new notifications
+                            You have 5 new notifications
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                         </li>
                         <li>
@@ -246,9 +246,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Logout</span>
                             </a>
                         </li>
 
@@ -349,9 +349,9 @@
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/AdminFaqs">
+                <a class="nav-link collapsed" href="/AdminFaq">
                     <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
+                    <span>FAQs</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
 

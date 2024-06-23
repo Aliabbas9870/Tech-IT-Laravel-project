@@ -12,7 +12,7 @@ class AdminFormLayoutController extends Controller
      */
     public function index()
     {
-        return view('backend.FormLayout');
+        return view('backend.formlayout');
     }
 
     /**
