@@ -10,24 +10,25 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="backend/img/favicon.png" rel="icon">
-    <link href="backend/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/backend/img/favicon.png" rel="icon">
+    <link href="/backend/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="/https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        href="/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="backend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="backend/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="backend/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="backend/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="backend/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="backend/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="backend/vendor/simple-datatables/style.css" rel="stylesheet">
-    <link href="backend/css/style.css" rel="stylesheet">
+    <link href="/backend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/backend/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/backend/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/backend/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="/backend/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="/backend/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/backend/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="/backend/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="/admin" class="logo d-flex align-items-center">
                 {{-- <img src="backend/img/logo.png" alt=""> --}}
-                <span class="d-none d-lg-block">NICEIT</span>
+                <span class="d-none d-lg-block">NICE IT</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -76,8 +77,8 @@
                         <li class="notification-item">
                             <i class="bi bi-exclamation-circle text-warning"></i>
                             <div>
-                                <h4>Lorem Ipsum</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <h4>Testing</h4>
+                                <p>Laravel Testing work TechIt Web</p>
                                 <p>30 min. ago</p>
                             </div>
                         </li>
@@ -202,7 +203,7 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="backend/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="/backend/img/anmy.jpeg" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">Ali Abbas</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -236,7 +237,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq">
+                            <a class="dropdown-item d-flex align-items-center" href="/AdminFaq">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Need Help?</span>
                             </a>
@@ -285,7 +286,7 @@
                             <i class="bi bi-circle"></i><span>Form Layouts</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="/formEditor">
                             <i class="bi bi-circle"></i><span>Form Editors</span>
                         </a>
@@ -294,9 +295,9 @@
                         <a href="/formValid">
                             <i class="bi bi-circle"></i><span>Form Validation</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
-            </li><!-- End Forms Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
@@ -346,7 +347,14 @@
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
-            </li><!-- End Profile Page Nav -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/projects">
+                    <i class="bi bi-briefcase"></i>
+                    <span>Project</span>
+                </a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/AdminFaq">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\AdminContactModel;
+use App\Models\backend\Projects;
 use Illuminate\Http\Request;
 
 class AdminDataTableController extends Controller
@@ -12,7 +14,7 @@ class AdminDataTableController extends Controller
      */
     public function index()
     {
-      return view('backend.datatable');
+        return view('backend.datatable', ['projects' => Projects::all()], ['AdminContactModel' => AdminContactModel ::all()]);
     }
 
     /**

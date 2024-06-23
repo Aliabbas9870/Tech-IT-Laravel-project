@@ -12,28 +12,30 @@ use App\Http\Controllers\backend\AdminHomeController;
 use App\Http\Controllers\backend\AdminIconBootstrapController;
 use App\Http\Controllers\backend\AdminLoginController;
 use App\Http\Controllers\backend\AdminProfileController;
+use App\Http\Controllers\backend\AdminProjectController;
 use App\Http\Controllers\backend\AdminRegisterController;
 use App\Http\Controllers\backend\AdminRemixIconController;
 ////////// #frontend////////////////////
-use App\Http\Controllers\frontend\aboutuscontroller;
-use App\Http\Controllers\frontend\blogcontroller;
-use App\Http\Controllers\frontend\contactcontroller;
-use App\Http\Controllers\frontend\contactuscontroller;
-use App\Http\Controllers\frontend\faqcontroller;
-use App\Http\Controllers\frontend\homecontroller;
-use App\Http\Controllers\frontend\insurancecontroller;
-use App\Http\Controllers\frontend\projectcontroller;
+use App\Http\Controllers\frontend\Aboutuscontroller;
+use App\Http\Controllers\frontend\Blogcontroller;
+use App\Http\Controllers\frontend\Contactcontroller;
+use App\Http\Controllers\frontend\Contactuscontroller;
+use App\Http\Controllers\frontend\Faqcontroller;
+use App\Http\Controllers\frontend\Homecontroller;
+use App\Http\Controllers\frontend\Insurancecontroller;
+use App\Http\Controllers\frontend\Projectcontroller;
 use App\Http\Controllers\frontend\registercontroller;
-use App\Http\Controllers\frontend\servicedetailscontroller;
-use App\Http\Controllers\frontend\services;
-use App\Http\Controllers\frontend\teamcontroller;
-use App\Http\Controllers\frontend\teamdetailscontroller;
+use App\Http\Controllers\frontend\Servicedetailscontroller;
+use App\Http\Controllers\frontend\Services;
+use App\Http\Controllers\frontend\Teamcontroller;
+use App\Http\Controllers\frontend\Teamdetailscontroller;
 use Illuminate\Support\Facades\Route;
 
 // frontend controller
 
 Route::get('/', [Homecontroller::class, 'index']);
 Route::get('/index', [Homecontroller::class, 'index'])->name('home');
+Route::post('/index', [Homecontroller::class, 'store']);
 Route::get('/Contact', [Contactuscontroller::class, 'index']);
 Route::post('/Contact', [Contactuscontroller::class, 'store']);
 Route::get('/contact', [Contactcontroller::class, 'index']);
@@ -46,6 +48,8 @@ Route::get('/services', [Services::class, 'index']);
 Route::get('/projects', [Projectcontroller::class, 'index']);
 Route::get('/insurance', [Projectcontroller::class, 'index']);
 Route::get('/faqs', [Faqcontroller::class, 'index']);
+// Route::get('/faqs', [Faqcontroller::class, 's']);
+
 Route::get('/blog', [Blogcontroller::class, 'index']);
 Route::get('/insurance', [Insurancecontroller::class, 'index']);
 Route::get('/register', [registercontroller::class, 'index'])->name('user-register');
@@ -60,10 +64,10 @@ Route::post('/register/update/{id}', [RegisterController::class, 'update'])->nam
 
 //Login Page
 Route::get('/admin/login', [AdminLoginController::class, 'index']);
-Route::get('/admin/login', function(){
-    if(session()->has('email')){
+Route::get('/admin/login', function () {
+    if (session()->has('email')) {
         return redirect('/admin');
-    } else{
+    } else {
         return view('backend.login');
     }
 
@@ -72,7 +76,9 @@ Route::post('/admin/login', [AdminLoginController::class, 'onLogin']);
 Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']);
 
 Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin');
-Route::post('/admin', [AdminHomeController::class, 'index'])->name('admin');
+Route::get('/admins', [AdminHomeController::class, 'home'])->name('admin');
+
+Route::post('/admin', [AdminHomeController::class, 'index']);
 Route::get('/Login', [AdminLoginController::class, 'index']);
 Route::Post('/Login', [AdminLoginController::class, 'store']);
 Route::get('/RegisterAdmin', [AdminRegisterController::class, 'index']);
@@ -86,11 +92,10 @@ Route::post('/AdminContact', [AdminContactController::class, 'store']);
 Route::get('/AdminFaq', [AdminFAQSController::class, 'index']);
 
 Route::get('/admin/faq-add', [AdminFaqsController::class, 'addFAQ'])->name('faq.add');
-Route::post('/admin/faq-add', [AdminFaqsController::class, 'submitFaqRecord']);
+Route::post('/admin/faqadd', [AdminFaqsController::class, 'submitFaqRecord']);
 Route::get('/admin/faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('faq.edit');
 Route::put('/admin/faq-edit/{id}', [AdminFaqsController::class, 'updateFAQ'])->name('faq.update');
 Route::delete('/admin/faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('faq.delete');
-
 
 Route::get('/formValid', [AdminFormValidationController::class, 'index']);
 Route::get('/formLayout', [AdminFormLayoutController::class, 'index']);
@@ -101,3 +106,12 @@ Route::get('/generalTable', [AdminGeneralTableController::class, 'index']);
 Route::get('/iconBootstrap', [AdminIconBootstrapController::class, 'index']);
 Route::get('/boxIcon', [AdminBoxiconController::class, 'index']);
 Route::get('/remixIcon', [AdminRemixIconController::class, 'index']);
+
+////projects
+Route::get('/admin/projects', [AdminProjectController::class, 'index'])->name('project.add');
+Route::get('/admin/project', [AdminProjectController::class, 'projects']);
+Route::get('/admin/projectadd', [AdminProjectController::class, 'addProject'])->name('project.add');
+Route::post('/admin/project-add', [AdminProjectController::class, 'submitProjectRecord']);
+Route::get('/admin/project-edit/{id}', [AdminProjectController::class, 'editProject'])->name('project.edit');
+Route::put('/admin/project-edit/{id}', [AdminProjectController::class, 'updateProject'])->name('project.update');
+Route::delete('/admin/project-delete/{id}', [AdminProjectController::class, 'deleteProject'])->name('project.delete');

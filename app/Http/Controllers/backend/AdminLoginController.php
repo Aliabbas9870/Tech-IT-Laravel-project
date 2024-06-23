@@ -1,23 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\backend;
-
 use App\Http\Controllers\Controller;
-use App\Models\backend\admins;
+use App\Models\backend\Admins;
 use Illuminate\Http\Request;
-
 class AdminLoginController extends Controller
 {
-
     public function index()
     {
         return view('backend.login');
     }
-
     public function onLogin(Request $request)
     {
 
-        $admin = admins ::where('email', $request->input('email'))->where('password', $request->input('password'))->first();
+        $admin = Admins ::where('email', $request->input('email'))->where('password', $request->input('password'))->first();
         if($admin){
             session()->put('id', $admin->id);
             session()->put('first_name', $admin->first_name);
@@ -37,7 +33,5 @@ class AdminLoginController extends Controller
         session()->forget('last_name');
         session()->forget('email');
         return redirect('/admin/login')->with('success', 'Logout Success');
-
     }
-
 }

@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="card-body">
-                <form method="post" action="/admin/faq-add">
+                <form method="post" action="/admin/faqadd">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="question">Question</label>

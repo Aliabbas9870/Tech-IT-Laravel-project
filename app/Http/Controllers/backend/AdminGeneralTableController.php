@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\AdminContactModel;
+use App\Models\frontend\registermodel;
 use Illuminate\Http\Request;
 
 class AdminGeneralTableController extends Controller
@@ -12,7 +14,7 @@ class AdminGeneralTableController extends Controller
      */
     public function index()
     {
-        return view('backend.generaltable');
+        return view('backend.generaltable', ['registers' => registermodel::all()], ['AdminContactModel' => AdminContactModel::all()]);
     }
 
     /**

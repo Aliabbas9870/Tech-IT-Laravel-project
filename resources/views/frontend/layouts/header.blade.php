@@ -2,16 +2,12 @@
 <html lang="en">
 
 <head>
-    <!-- ========== Meta Tags ========== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- ========== Page Title ========== -->
-    <title> @yield('title') IT Business</title>
+    <title> @yield('title') | IT Business</title>
 
     <link rel="shortcut icon" href="frontend/img/favicon.png" type="image/x-icon">
-
-    <!-- ========== Start Stylesheet ========== -->
     <link href="frontend/css/bootstrap.min.css" rel="stylesheet">
     <link href="frontend/css/font-awesome.min.css" rel="stylesheet">
     <link href="frontend/css/themify-icons.css" rel="stylesheet">
@@ -25,13 +21,11 @@
     <link href="frontend/css/unit-test.css" rel="stylesheet">
     <link href="frontend/css/style.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <!-- ========== End Stylesheet ========== -->
 
 </head>
 
 <body>
-    <!-- Start Header Top
-    ============================================= -->
+
     <div class="top-bar-area top-bar-style-one bg-dark text-light">
         <div class="container">
             <div class="row align-center">
@@ -41,30 +35,26 @@
                             <i class="fas fa-map-marker-alt"></i> Sahiwal punjab pakistan
                         </li>
                         <li>
-                            <a href="tel:+923251806654"><i class="fas fa-phone-alt"></i> +923251806654</a>
+                            <a href="tel:+923251806654"><i class="fas fa-phone-alt"></i> +92 3251806654</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-5 text-end">
                     <div class="social">
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
+
+                            {{-- <li>
                                 <a href="#">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a href="#">
+                                <a href="https://www.youtube.com/channel/UCJxEAYykTjCcz1SCd-U4CFA">
                                     <i class="fab fa-youtube"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="https://www.linkedin.com/in/ali-abbas-63a263234/">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
                             </li>
@@ -130,7 +120,7 @@
                         <li class="dropdown">
                             <a href="/blog">Blog</a>
                         </li>
-                        <li><a href="/faqs">Faqs</a></li>
+                        <li><a href="/faqs">FAQs</a></li>
                         <li><a href="/Contact">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

@@ -82,13 +82,16 @@
                     <p>
                         Join our subscribers list to get the latest <br> news and special offers.
                     </p>
+
                     <div class="f-item newsletter">
-                        <form action="" method="POST">
+                        <form action="/index" method="POST">
                             @csrf
                             <input type="email" placeholder="Your Email" class="form-control" name="email">
                             <button type="submit"> Subscribe</button>
+
                         </form>
                     </div>
+                    <div id="alertBox" style="display:none;" class="alert alert-success">Thank you!</div>
                     <ul class="footer-social">
                         <li>
                             <a href="#">
@@ -119,10 +122,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <p> All Rights Reserved &copy; {{ date('Y') }}  | Developed by <a href="mailto:ali@gmail.com">Ali Abbas</a> under the supervision of <a href="mailto:jamil@cuisahiwal.edu.pk">Sir Muhammad Jamil</a></p>
+                    <p> All Rights Reserved &copy; {{ date('Y') }} | Developed by <a href="mailto:ali@gmail.com">Ali
+                            Abbas</a> under the supervision of <a href="mailto:jamil@cuisahiwal.edu.pk">Sir Muhammad
+                            Jamil</a></p>
                 </div>
                 <div class="col-lg-4 text-end">
                     <ul>
+                        <li>
+                            <a href="/admin">Admin</a>
+                        </li>
                         <li>
                             <a href="/about">Terms</a>
                         </li>
@@ -160,4 +168,5 @@
 <script src="frontend/js/validnavs.js"></script>
 <script src="frontend/js/main.js"></script>
 </body>
+
 </html>
